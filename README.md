@@ -12,11 +12,11 @@ AWS S3
 Instal .NET AWS SDK
 
 #### Right click Web app --> Publish to AWS Elastic Beanstalk --> Follow publish wizard
-*setup App Environment
-*setup options
-*setup permisions(aws Roles)
-*setup tracing options
-*Review Deployment options
+* setup App Environment
+* setup options
+* setup permisions(aws Roles)
+* setup tracing options
+* Review Deployment options
 
 
 ### Useful Resources
