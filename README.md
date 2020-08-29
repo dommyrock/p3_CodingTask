@@ -1,17 +1,17 @@
 # p3_CodingTask
-###coding task issued by company
+### coding task issued by company
 
-##Project setup instructions:
+## Project setup instructions:
 
-####Backend: (.NET Core 3.1 Web App)
+#### Backend: (.NET Core 3.1 Web App)
 
-###DB:
+### DB:
 AWS S3
 
-###To deploy project :
+### To deploy project :
 Instal .NET AWS SDK
 
-####Right click Web app --> Publish to AWS Elastic Beanstalk --> Follow publish wizard
+#### Right click Web app --> Publish to AWS Elastic Beanstalk --> Follow publish wizard
 -setup App Environment
 -setup options
 -setup permisions(aws Roles)
@@ -19,7 +19,7 @@ Instal .NET AWS SDK
 -Review Deployment options
 
 
-###Useful Resources
+### Useful Resources
 
  * https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html
  * An object that is named with a trailing "/" appears as a folder in the Amazon S3 console. ( examplekeyname/)
