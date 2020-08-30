@@ -17,5 +17,7 @@ namespace p3CodingTask.Interfaces
         public Task<S3Response> DeleteEntityAsync(string folderUrl);
 
         public Task<FileAttachments> SearchTopNAsync(string query);
+
+        public string ShareResource(string resourceURL);
     }
 }

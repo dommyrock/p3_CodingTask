@@ -12,7 +12,7 @@ namespace p3CodingTask.Services
     {
         private static IAmazonS3 _s3Client;
         private static string _bucketName { get; set; }
-        private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USWest2;
+        private static readonly RegionEndpoint bucketRegion = RegionEndpoint.EUCentral1;
 
         public S3Cors(string bucketName)
         {

@@ -11,17 +11,17 @@ namespace p3CodingTask
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //CORS enabled for my personal site wher I'll use filashare api for Drag n drop file uploads
+            //CORS enabled for my personal site where I'll be using filashare api in future
             services.AddCors(options =>
             {
                 options.AddPolicy("parser-app",
@@ -34,8 +34,12 @@ namespace p3CodingTask
             });
             services.AddMvc();
 
+            #region Register other services
+
             services.AddSingleton<IS3Service, S3Service>();
             services.AddAWSService<IAmazonS3>();
+
+            #endregion Register other services
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +48,10 @@ namespace p3CodingTask
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
             }
 
             //app.UseHttpsRedirection();
@@ -55,8 +63,6 @@ namespace p3CodingTask
 
             app.UseCors("parser-app");
 
-            //Help : https://stackoverflow.com/questions/57684093/using-usemvc-to-configure-mvc-is-not-supported-while-using-endpoint-routing
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
@@ -64,3 +70,5 @@ namespace p3CodingTask
         }
     }
 }
+
+//Help : https://stackoverflow.com/questions/57684093/using-usemvc-to-configure-mvc-is-not-supported-while-using-endpoint-routing

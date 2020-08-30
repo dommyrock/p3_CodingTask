@@ -79,6 +79,16 @@ namespace p3CodingTask.Controllers
 
             return result;
         }
+
+        // GET: api/fileshare/share?url=""
+        [HttpGet("share", Name = "ShareResource")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public string ShareResource([FromQuery]string url)
+        {
+            var result = _s3Service.ShareResource(url);
+
+            return result;
+        }
     }
 }
 

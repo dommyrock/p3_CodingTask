@@ -282,5 +282,35 @@ namespace p3CodingTask.Services
             s3Response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
             return s3Response;
         }
+
+        /// <summary>
+        /// Returns shareable link with set expiration
+        /// </summary>
+        /// <param name="resourceURL"></param>
+        /// <returns>Shareable link</returns>
+        /// <see cref="https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURLDotNetSDK.html"/>
+        public string ShareResource(string resourceURL)
+        {
+            string urlString = "";
+            try
+            {
+                GetPreSignedUrlRequest request1 = new GetPreSignedUrlRequest
+                {
+                    BucketName = _bucketName,
+                    Key = resourceURL,
+                    Expires = DateTime.Now.AddMinutes(15)
+                };
+                urlString = _s3Client.GetPreSignedURL(request1);
+            }
+            catch (AmazonS3Exception e)
+            {
+                Console.WriteLine("Error encountered on server. Message:'{0}' when writing an object", e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown encountered on server. Message:'{0}' when writing an object", e.Message);
+            }
+            return urlString;
+        }
     }
 }
