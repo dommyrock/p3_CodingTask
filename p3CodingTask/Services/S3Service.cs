@@ -1,4 +1,5 @@
-﻿using Amazon.S3;
+﻿using Amazon;
+using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using Amazon.S3.Util;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using p3CodingTask.Interfaces;
 using p3CodingTask.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,13 +17,17 @@ namespace p3CodingTask.Services
     public class S3Service : IS3Service
     {
         private readonly IAmazonS3 _s3Client;
+        private static readonly RegionEndpoint bucketRegion = RegionEndpoint.EUCentral1;
 
-        //fileshare s3 bucket
-        private const string _bucketName = "fileShareS3";
+        /// <summary>
+        /// <see cref="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html"/>
+        /// </summary>
+        private const string _bucketName = "file-share-bucket-dommyrock";
 
-        public S3Service(IAmazonS3 client)
+        ///
+        public S3Service()
         {
-            _s3Client = client;
+            _s3Client = new AmazonS3Client(bucketRegion);
         }
 
         /// <summary>
@@ -39,7 +45,7 @@ namespace p3CodingTask.Services
                     var putBucketRequest = new PutBucketRequest
                     {
                         BucketName = bucketName,
-                        UseClientRegion = true
+                        UseClientRegion = true,
                     };
 
                     var response = await _s3Client.PutBucketAsync(putBucketRequest);
@@ -136,8 +142,8 @@ namespace p3CodingTask.Services
                 foreach (var file in files)
                 {
                     Stream str = file.OpenReadStream();
-
-                    await fileTransferUtility.UploadAsync(str, _bucketName, folderUrl);
+                    string key = $"{folderUrl}/{file.FileName}";
+                    await fileTransferUtility.UploadAsync(str, _bucketName, key);
                 }
             }
             catch (AmazonS3Exception e)
@@ -166,6 +172,7 @@ namespace p3CodingTask.Services
         /// <seealso cref="https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingObjectKeysUsingNetSDK.html"/>
         public async Task<FileAttachments> GetFolderContentsAsync(string folderUrl)
         {
+            var content = new FileAttachments();
             string responseBody = "";
             try
             {
@@ -184,21 +191,27 @@ namespace p3CodingTask.Services
                     Console.WriteLine("Object metadata, Title: {0}", title);
                     Console.WriteLine("Content type: {0}", contentType);
 
-                    responseBody = reader.ReadToEnd(); // Now you process the response body.
+                    responseBody = await reader.ReadToEndAsync();
+                    // Now you process the response body.
+                    //TODO; pull out the file data from stream ...
+                    content.Files = new List<FileAttachment>();
+                    content.Files.Add(new FileAttachment() { Body = responseBody });
                 }
-                //TODO; mapp read data to my model FileAttachments
+                return content;
             }
             catch (AmazonS3Exception e)
             {
+                content.ErrorMessage = e.Message;
                 // If bucket or object does not exist
                 Console.WriteLine("Error encountered ***. Message:'{0}' when reading object", e.Message);
             }
             catch (Exception e)
             {
+                content.ErrorMessage = e.Message;
                 Console.WriteLine("Unknown encountered on server. Message:'{0}' when reading object", e.Message);
             }
 
-            return new FileAttachments();
+            return content;
         }
 
         /// <summary>

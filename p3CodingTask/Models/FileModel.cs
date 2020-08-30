@@ -7,6 +7,6 @@ namespace p3CodingTask.Models
         //NOTE : when using [FromForm], names of props == param names in FormData( on client side !)
 
         public IFormFileCollection Files { get; set; }
-        public string FolderUrl { get; set; }
+        public string FolderPath { get; set; }
     }
 }

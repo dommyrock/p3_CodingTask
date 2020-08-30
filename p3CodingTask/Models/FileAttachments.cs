@@ -9,5 +9,6 @@ namespace p3CodingTask.Models
     {
         public ICollection<FileAttachment> Files { get; set; }
         public ICollection<FolderModel> Folders { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

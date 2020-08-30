@@ -9,8 +9,7 @@ namespace p3CodingTask.Controllers
 {
     [EnableCors]
     [ApiController]
-    [Route("api/fileshare")]
-    [Produces("application/josn")]
+    [Route("api/fileshare"), Produces("application/json")]
     public class FileSharingController
     {
         private readonly IS3Service _s3Service;
@@ -45,7 +44,7 @@ namespace p3CodingTask.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<S3Response> UploadFiles([FromForm] FileModel model)
         {
-            var response = await _s3Service.UploadFilesAsync(model.Files, model.FolderUrl);
+            var response = await _s3Service.UploadFilesAsync(model.Files, model.FolderPath);
 
             return response;
         }
@@ -130,6 +129,7 @@ namespace p3CodingTask.Controllers
  *
  * CORS
  * https://docs.aws.amazon.com/AmazonS3/latest/dev/ManageCorsUsingDotNet.html
+ * https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html#how-do-i-enable-cors
  * https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
  * https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html
  *
