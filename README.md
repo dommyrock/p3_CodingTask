@@ -11,12 +11,12 @@ AWS S3
 ### To deploy project :
 [Install .NET AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.AWSToolkitforVisualStudio2017)
 
-> #### Right click Web app --> Publish to AWS Elastic Beanstalk --> Follow publish wizard
-> * setup App Environment
-> * setup options
-> * setup permisions(aws Roles)
-> * setup tracing options
-> * Review Deployment options
+> #### Right click Web app --> Publish to AWS Elastic Beanstalk --> Follow publish wizard <
+> * setup App Environment <
+> * setup options <
+> * setup permisions(aws Roles) <
+> * setup tracing options <
+> * Review Deployment options <
 ---
 
 ### Useful Resources
@@ -25,33 +25,42 @@ AWS S3
  * An object that is named with a trailing "/" appears as a folder in the Amazon S3 console. ( examplekeyname/)
  *
  * Upload File/folder
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpNET.html
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/HLuploadFileDotNet.html
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/LLuploadFileDotNet.html
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/HLuploadDirDotNet.html
- *
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpNET.html
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/HLuploadFileDotNet.html
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/LLuploadFileDotNet.html
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/HLuploadDirDotNet.html
+ ```
  * Get
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/RetrievingObjectUsingNetSDK.html
- *
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/RetrievingObjectUsingNetSDK.html
+ ```
  * Delete
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/DeletingMultipleObjectsUsingNetSDK.html
- *
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/DeletingMultipleObjectsUsingNetSDK.html
+ ```
  * CORS
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/ManageCorsUsingDotNet.html
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
- * https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html
- *
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/ManageCorsUsingDotNet.html
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
+  https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html
+ ```
  * Storage classes
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html
- *
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html
+ ```
  * Versioning
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectVersioning.html
- *
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectVersioning.html
+ ```
  * multipart/Upload limits
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/qfacts.html
- *
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/qfacts.html
+ ```
+ ---
  * Performance
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/optimizing-performance.html
- *------------------------------------
- * https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration-examples.html
- * https://stacks.wellcomecollection.org/creating-a-data-store-from-s3-and-dynamodb-8bb9ecce8fc1
+ ```
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/optimizing-performance.html
+  https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration-examples.html
+  https://stacks.wellcomecollection.org/creating-a-data-store-from-s3-and-dynamodb-8bb9ecce8fc1
+  ```
