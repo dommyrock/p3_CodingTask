@@ -11,13 +11,13 @@ AWS S3
 ### To deploy project :
 [Install .NET AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.AWSToolkitforVisualStudio2017)
 
-#### Right click Web app --> Publish to AWS Elastic Beanstalk --> Follow publish wizard
-* setup App Environment
-* setup options
-* setup permisions(aws Roles)
-* setup tracing options
-* Review Deployment options
-
+> #### Right click Web app --> Publish to AWS Elastic Beanstalk --> Follow publish wizard
+> * setup App Environment
+> * setup options
+> * setup permisions(aws Roles)
+> * setup tracing options
+> * Review Deployment options
+---
 
 ### Useful Resources
 
